@@ -1,4 +1,5 @@
 const body = document.querySelector("body")
+const clock = document.querySelector(".clock")
 const second = document.querySelector(".second")
 const minute = document.querySelector(".minute")
 const hour = document.querySelector(".hour")
@@ -14,10 +15,17 @@ const updateTime = () => {
     minute.style.transform = `rotate(${setToDegMin}deg)`;
     hour.style.transform = `rotate(${setToDegHr}deg)`;
 
-    console.log("min", setToDegMin);
-    console.log("sec", setToDegSec);
-    console.log("hr", setToDegHr);
+}
 
+const handleMode = () => {
+    switchMode.addEventListener('click', () => {
+        body.classList.toggle("body-dark")
+        switchMode.classList.toggle("white-btn")
+        clock.classList.toggle("clock-dark")
+        minute.classList.toggle("minute-dark")
+
+        !switchMode.classList.contains("white-btn") ? switchMode.innerText = "Dark Mode" : switchMode.innerText = "Light Mode"
+    })
 }
 
 setInterval(updateTime, 1000)
